@@ -14,13 +14,11 @@ describe "Static pages" do
         click_link "About"
         page.should have_selector 'title', text: full_title('About Us')
         click_link "Help"
-        page.should # fill in
+        page.should have_selector 'title', text: full_title('Help')
         click_link "Contact"
-        page.should # fill in
-        click_link "About"
-        page.should # fill in
+        page.should have_selector 'title', text: full_title('Contact Us')
         click_link "Home"
-        page.should # fill in
+        
     end
         
   describe "Home page" do
@@ -29,6 +27,7 @@ describe "Static pages" do
         let(:heading) {'Sample App'}
         let(:page_title) {''}
         it_should_behave_like "all static pages"
+        it { should_not have_selector 'title', text: '| Home'}
 
   end
 
