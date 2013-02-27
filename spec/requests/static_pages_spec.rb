@@ -18,6 +18,7 @@ describe "Static pages" do
         click_link "Contact"
         page.should have_selector 'title', text: full_title('Contact Us')
         click_link "Home"
+        click_link "sample app"
         
     end
         
