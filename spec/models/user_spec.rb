@@ -12,11 +12,14 @@
 require 'spec_helper'
 
 describe User do
+# the before code runs before each example
     before { @user = User.new(name:"Pedro Albiter", email:"pedroa@comefirst.com",
     password:"foobar", password_confirmation:"foobar") }
     
+# @user is the default subject
     subject { @user }
     
+# check the existence of all the attributes in the class
     it { should respond_to(:name) }
     it { should respond_to(:email)}
     it { should respond_to(:password_digest)}
