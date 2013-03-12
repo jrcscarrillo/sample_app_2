@@ -75,7 +75,7 @@ describe User do
             use_with_same_email.email = @user.email.upcase
             use_with_same_email.save
         end
-        it { should_not be_valid}
+        it { should_not be_valid }
     end
     
     describe "email address with mixed case" do
