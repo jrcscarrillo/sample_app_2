@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
     attr_accessible :email, :name, :password, :password_confirmation
 # Rails method to validate password and password confirmation
     has_secure_password
-    
+    has_many :microposts, dependent: :destroy
 before_save { |user| user.email = email.downcase }
   
 #before_save { email.downcase! }
@@ -31,7 +31,14 @@ before_save :create_remember_token
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true
   
+    def feed
+    # This is preliminary. See "Following users" for the full implementation.
+    Micropost.where("user_id = ?", id)
+  end
+  
 private
+
+
     def create_remember_token
         self.remember_token = SecureRandom.urlsafe_base64
     end
